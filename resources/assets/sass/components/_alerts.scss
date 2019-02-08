@@ -1,0 +1,32 @@
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+//c_sousen
+//we use curved boxed message use any of the following class -> success/danger clubbed with curve-box class identifier
+//  we have put display: inline;
+//  margin-left: 2em;
+//  border-radius: 50px 10px 50px 10px these properties inside another class identifier for the sake of modularity and reusabilty
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    // display: inline;
+    // margin-left: 2em;
+    // border-radius: 50px 10px 50px 10px;
+}
+.curve-box{
+    display: inline;
+    margin-left: 2em;
+    border-radius: 50px 10px 50px 10px;
+}
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    // display: inline;
+    // margin-left: 2em;
+    // border-radius: 50px 10px 50px 10px;
+}

@@ -1,0 +1,33 @@
+.search-form {
+    position: relative;
+}
+#aa-input-container {
+    display: inline-block{
+        height: 20px;
+    };
+    position: relative;
+  }
+.aa-input-icon {
+    height: 15px;
+    width: 16px;
+    position: absolute;
+    top: 52%;
+    right: 8px;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    //fill: #e4e4e4;
+    pointer-events: none;
+  }
+.search-icon {
+    color: gray;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+.search-box {
+    padding: 10px 12px 10px 34px;
+    width: 400;
+    max-width: 100%;
+    font-size: 14px;
+}
