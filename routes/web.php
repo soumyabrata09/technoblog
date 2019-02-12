@@ -35,7 +35,7 @@ Route::get('empty',function(){
 // Route::get('/', function () {
 //     return view('landing-page');
 // });
-// Route::get('/', 'LandingPageController@index')->name('landing-page');
+ Route::get('/axiostest', 'LandingPageController@index')->name('landing-page');
 Auth::routes();
 
 //  Route::get('/home', 'HomeController@index')->name('home');

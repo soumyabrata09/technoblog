@@ -226,6 +226,13 @@
   <div id="wishlist_component">
      <wishlist></wishlist>
   </div>
+  <div id="axiostestid">
+    <!-- c_sousen :: added for testing the vue compoenent  -->
+     <!-- <var id ="var">Cart::instance(default)>count() </var> -->
+    <axiostest cart-count="{{ Cart::instance('default')->count() }}"></axiostest>
+    <hr/>
+    <axiostest cart-count="{{ Cart::instance('Wishlist')->count() }}"></axiostest>
+  </div>
   
 
 </div>

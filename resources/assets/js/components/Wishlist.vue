@@ -63,9 +63,10 @@
 
 <script>
     export default {
-        created(){
-            axios.get(route(cart.switchToWishlist));
-        },
+      // name : WishList,
+        // created(){
+        //     axios.get(route(cart.switchToWishlist));
+        // },
         mounted() {
             console.log('Wishlist Component mounted successfully...')
         }

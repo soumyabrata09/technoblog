@@ -31,6 +31,7 @@
 
 <script>
 export default {
+   // name : BlogComponent,
     mount(){
         console.log('Blog Component mounted successfully');
     }

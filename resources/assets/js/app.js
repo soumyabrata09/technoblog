@@ -70,3 +70,11 @@ const vm_blog = new Vue({
     blogcontent : BlogComponent
   }
 });
+
+//c_sosuen : added for testing AXIO
+const vm_axios_test = new Vue({
+  el : '#axiostestid',
+  components : {
+    axiostest : require('./components/AxiosDemo.vue')
+  }
+});
