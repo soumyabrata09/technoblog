@@ -38,7 +38,7 @@
     <a href="{{route('shop.index')}}" class="continue">Continue Shopping</a>
    
   </div>
-  @if(Cart::count() > 0)
+  @if(GetCartCount() > 0)
  <!-- making cart count dynamic -->
   <h3>You have {{ Cart::count() }} item(s) in your cart</h3>
   <div class="cart">
@@ -221,18 +221,35 @@
       <router-view></router-view>
   </div> -->
   @else
-  <h3>No Items in your cart</h3>
+    <h3 class="alert-danger">No Items in your cart</h3>
   @endif
-  <div id="wishlist_component">
-     <wishlist></wishlist>
-  </div>
-  <div id="axiostestid">
-    <!-- c_sousen :: added for testing the vue compoenent  -->
-     <!-- <var id ="var">Cart::instance(default)>count() </var> -->
-    <axiostest cart-count="{{ Cart::instance('default')->count() }}"></axiostest>
+  
+  <!-- wishlist section -->
+
+  @if(GetWishlistCount() > 0 )
+   
+<!-- testing -->
+
+    <div id="wishlist_component">
+       <!-- <h3 class="alert-success curve-box">You have items in your wishlists</h3> -->
+       <h3>You have items in your wishlists</h3>
+       <wishlist></wishlist>
+      
+    </div>
+    
+    {{GetWishlistContent()}}
+    
+   <!-- <h3></h3> -->
+  @else
+    <h3 class="alert-danger curve-box">No Items in your Wishlist</h3>
+  @endif
+  
+  <!-- <div id="axiostestid">
+    c_sousen :: added for testing the vue compoenent 
+    <axiostest cart-count="{{ GetCartCount() }}"></axiostest>
     <hr/>
-    <axiostest cart-count="{{ Cart::instance('Wishlist')->count() }}"></axiostest>
-  </div>
+    <axiostest cart-count="{{ Cart::instance('wishlist')->count() }}"></axiostest>
+  </div> -->
   
 
 </div>

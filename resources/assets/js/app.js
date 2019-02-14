@@ -78,3 +78,5 @@ const vm_axios_test = new Vue({
     axiostest : require('./components/AxiosDemo.vue')
   }
 });
+// vm_axios_test.counter = GetCartCount();
+// vm_axios_test.wlcounter =GetWishlistCount();                                                                               

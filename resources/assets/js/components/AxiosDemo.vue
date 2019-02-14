@@ -4,11 +4,32 @@
 
      <div id="axiostestid">
     <!-- c_sousen :: added for testing the vue compoenent  -->
-     {{cartCount}}
+       Count ::  {{cartCount}}
+     
+         <!-- {{wishlistContent}} -->
+         <hr/>
+         <!-- {{ extractJSON(wishlistContent) }} -->
     <!-- <axiostest cart-count="testing information"></axiostest> -->
-  </div>
+          <ul>
+             <li v-for="(value,key) in JSON.parse(wishlistContent)">
+                 <!--{{Key field is actually rowId , we can use that }}-->
+                :: PRODUCT_ID :: {{ value.id }} <br/>
+               :: PRODUCT_NAME :: {{ value.name }} <br/>
+               :: PRODUCT_QTY :: {{ value.qty }} <br/>
+               :: PRODUCT_PRICE :: {{ value.price }} <br/>
+               :: PRODUCT_SUBTOTAL :: {{ value.subtotal }} <br/>
+               :: PRODUCT_SLUG :: {{ value.slug }} <hr/>               
+
+             </li>
+          </ul>
+     </div>
+
+<!--Wishtlist list rendering testing -->
+     
   
  </div>
+
+ 
     <!-- <div >
         <h1>Bitcoin Price Index</h1>
  {{ testing }}
@@ -32,22 +53,56 @@
 
 <script>
 export default {
-    props : ['cartCount'],
+    props : ['cartCount','wishlistContent'],
+    // props :{
+    //     cartCount :[Number,String],
+    //     wishlistContent :[Object,JSON]
+    // },
     data(){
         return{
-            info : null,
-            loading : true,
-            fallacy : false,
-            cartCount : ''
+            
+            // info : null,
+            // loading : true,
+            // fallacy : false,
+            cartCount : '',
+            // wishlistContent : JSON.stringify(this.wishlistContent),
+            //wishlistContent : JSON.parse(this.wishlistContent),
+            // wishlistContentTest :{
+            //      "rowId": "027c91341fd5cf4d2579b49c4b6a90da", 
+            //      "id": "1",
+            //       "name": "Choco Lave", 
+            //       "qty": 1, 
+            //       "price": 230, 
+            //       "options": [],
+            //       "tax": 32.2,
+            //       "subtotal": 230 
+            // }
         }
     },
-    // methods: {
-    //     send : function(){
-    //         return {
-    //             cartCount = this.cartCount
-    //         }
-    //     }
-    // },
+    
+    methods: {
+
+        parsedJson : function(json_obj){
+           //let self = this;
+          return JSON.parse(json_obj)
+       },   
+
+       extractJSON : function(obj) {
+          var keys = Object.keys(obj);
+          for(var i=0; i<keys.length; i++){
+              var key = keys[i];
+              console.log(key, obj[key]);
+          }
+                    //  for (const i in obj) {
+                    //       if (Array.isArray(obj[i]) || typeof obj[i] === 'object') {
+                    //             console.log(indent + i + ' is array or object');
+                    //             extractJSON(obj[i], indent + ' > ' + i + ' > ');
+                    //         } else {
+                    //             console.log(indent + i + ': ' + obj[i]);
+                    //         }
+                    //      }
+                      }
+     },
     // created(){
     //   axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
     //        .then(response =>{

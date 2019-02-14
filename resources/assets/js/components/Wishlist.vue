@@ -1,6 +1,7 @@
 <template>
    <div class="spacer">
-  <div class="wishlist_container">
+   <div class="wishlist_container">
+      <!-- <h3 class="alert-success">You have items in your wishlists</h3> -->
        <ul>
          <li class="wl_items wl_even">
            <div class="wl_info">

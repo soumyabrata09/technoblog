@@ -27,9 +27,15 @@ Route::delete('/cart/{product}','CartController@destroy')->name('cart.destroy');
 Route::get('/checkout','CheckoutController@index')->name('checkoutpage.index');
 Route::post('/cart/wishlist/{product}','CartController@switchToWishlist')->name('cart.switchToWishlist');
 
+
 //cart destroy testing
-Route::get('empty',function(){
-    Cart::destroy();
+Route::get('/empty/cart',function(){
+    // Cart::instance('default')->destroy();
+    return view('testingpages.whitepage')->with('danger_message','Your cart is Emptied');
+});
+Route::get('/empty/wishlist',function(){
+    // Cart::instance('wishlist')->destroy();
+    return view('testingpages.whitepage')->with('danger_message','Your wishlist is Emptied');
 });
 //added by c_sousen purpose testing -> added lin to langding-page.blade.php as a starter page of technoblog.com 
 // Route::get('/', function () {
