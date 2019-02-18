@@ -40,7 +40,7 @@
   </div>
   @if(GetCartCount() > 0)
  <!-- making cart count dynamic -->
-  <h3>You have {{ Cart::count() }} item(s) in your cart</h3>
+  <h3>You have {{ GetCartCount() }} item(s) in your cart</h3>
   <div class="cart">
 <!--    <ul class="tableHead">
       <li class="prodHeader">Product</li>
@@ -233,7 +233,7 @@
     <div id="wishlist_component">
        <!-- <h3 class="alert-success curve-box">You have items in your wishlists</h3> -->
        <h3>You have items in your wishlists</h3>
-       <wishlist></wishlist>
+       <wishlist wishlist-content="{{ GetWishlistContent() }}"></wishlist>
       
     </div>
     

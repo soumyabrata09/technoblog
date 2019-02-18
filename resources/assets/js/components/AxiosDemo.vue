@@ -1,19 +1,18 @@
 <template>
  <div>
-     Hello Everyone 
+     <!-- Hello World 
 
      <div id="axiostestid">
-    <!-- c_sousen :: added for testing the vue compoenent  -->
-       Count ::  {{cartCount}}
+    c_sousen :: added for testing the vue compoenent 
      
-         <!-- {{wishlistContent}} -->
+     
          <hr/>
-         <!-- {{ extractJSON(wishlistContent) }} -->
-    <!-- <axiostest cart-count="testing information"></axiostest> -->
+  
           <ul>
-             <li v-for="(value,key) in JSON.parse(wishlistContent)">
-                 <!--{{Key field is actually rowId , we can use that }}-->
-                :: PRODUCT_ID :: {{ value.id }} <br/>
+             <li v-for="(value) in JSON.parse(wishlistContent)">
+                 {{Key field is actually rowId , we can use that }}
+               ::rowId :: {{value.rowId}}<br/>
+               :: PRODUCT_ID :: {{ value.id }} <br/>
                :: PRODUCT_NAME :: {{ value.name }} <br/>
                :: PRODUCT_QTY :: {{ value.qty }} <br/>
                :: PRODUCT_PRICE :: {{ value.price }} <br/>
@@ -22,11 +21,64 @@
 
              </li>
           </ul>
-     </div>
+     </div> -->
 
 <!--Wishtlist list rendering testing -->
      
-  
+   <div class="wishlist_container">
+      <!-- <h3 class="alert-success">You have items in your wishlists</h3> -->
+       <ul>
+         <li  v-for="content in parsedJson(wishlistContent)" class="wl_items wl_even">
+           <div class="wl_info">
+              <div class="wl_Section">
+                <!-- <a :href="route('shop.show', content.model.slug)">
+                    <img :src="asset('img/'.content.model.slug.'.jpg')" alt="" class="itemImg" />
+                </a> -->
+            :: <p class="prod_catalogue">PRODUCT_NAME</p> ::{{ content.name }}
+               </div>
+               <div class="wl_Section removeWrap">
+           <!-- remove function implementation -->
+           <!-- <form action ="{{ route('cart.destroy' , $cartItem->rowId) }}" method ="POST" > -->
+<!--            {{ csrf_field() }}
+           {{ method_field('DELETE')}} -->
+           <!-- <a href="#" class="remove">x</a> -->Remove from wishlist
+                  <button type="submit" class="remove">X</button>
+           <!-- </form> -->
+          
+             <!-- <a>Add to Wishlist</a> -->
+                </div>
+                <div class="wl_Section">
+                    <div class="wishlist_cartSection">
+                          <button type="submit" class="button button-plain "><i class="fas fa-heart"></i>
+             <!-- <a>Add to Wishlist</a> -->
+                                    Move To Cart
+                           </button>
+                     </div>
+                </div>
+             </div>
+        </li>
+        <!-- <li class="wl_items wl_even">
+           <div class="wl_info">
+              <div class="wl_Section">
+                 <a href="#"><img src="https://www.pexels.com/photo/scenic-view-of-beach-248797/" alt="image not found"></a>
+            
+               </div>
+               <div class="wl_Section removeWrap">
+           Remove from wishlist
+                  <button type="submit" class="remove">X</button>
+                </div>
+                <div class="wl_Section">
+                    <div class="wishlist_cartSection">
+                          <button type="submit" class="button button-plain "><i class="fas fa-heart"></i>
+                                    Move To Cart
+                           </button>
+                     </div>
+                </div>
+             </div>
+        </li> -->
+      </ul>  
+    </div>
+
  </div>
 
  
@@ -137,3 +189,9 @@ export default {
     },
 }
 </script>
+<style lang="scss">
+  .prod_catalogue{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+  }
+</style>

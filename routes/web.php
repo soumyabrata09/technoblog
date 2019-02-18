@@ -29,19 +29,25 @@ Route::post('/cart/wishlist/{product}','CartController@switchToWishlist')->name(
 
 
 //cart destroy testing
-Route::get('/empty/cart',function(){
+Route::get('/test/cart',function(){
     // Cart::instance('default')->destroy();
     return view('testingpages.whitepage')->with('danger_message','Your cart is Emptied');
 });
-Route::get('/empty/wishlist',function(){
+Route::get('/test/wishlist',function(){
     // Cart::instance('wishlist')->destroy();
     return view('testingpages.whitepage')->with('danger_message','Your wishlist is Emptied');
+});
+Route::get('/cleardata/cart', function(){
+    Cart::instance('default')->destroy();
+});
+Route::get('/cleardata/wishlist',function(){
+    Cart::instance('wishlist')->destroy();
 });
 //added by c_sousen purpose testing -> added lin to langding-page.blade.php as a starter page of technoblog.com 
 // Route::get('/', function () {
 //     return view('landing-page');
 // });
- Route::get('/axiostest', 'LandingPageController@index')->name('landing-page');
+Route::get('/axiostest', 'LandingPageController@index')->name('landing-page');
 Auth::routes();
 
 //  Route::get('/home', 'HomeController@index')->name('home');

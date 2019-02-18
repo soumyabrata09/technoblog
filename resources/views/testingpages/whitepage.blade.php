@@ -17,12 +17,9 @@
     @endif
     
     <div id="axiostestid">
-    <!-- c_sousen :: added for testing the vue compoenent  -->
-    <axiostest cart-count="{{ GetCartCount() }}"></axiostest>
     <hr/>
-    <axiostest cart-count="{{ GetWishlistCount() }}"></axiostest>
+    <axiostest wishlist-content="{{ GetWishlistContent() }}"></axiostest>
     <hr/>
-    <axiostest wishlist-content="{{ json_encode(GetWishlistContent()) }}"></axiostest>
   </div>
 
     <script src="{{ mix('js/app.js') }}"></script>

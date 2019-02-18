@@ -12,11 +12,33 @@ function GetWishlistCount(){
     return Cart::instance('wishlist')->count();
 }
 function GetWishlistContent(){
-    return Cart::instance('wishlist')->content();
+    $wlcontent = Cart::instance('wishlist')->content();
+    // $rowid = Cart::get($wlcontent->rowId);
+    // Cart::associate($wlcontent->rowId,'App\Product');
+    // $wlCartItemArray;
+    //  foreach($wlcontent as $rowItem){
+    // //  echo 'You have ' . $rowItem->qty . ' items of ' . $rowItem->model->name . ' with description: "' . $rowItem->model->description . '" in your cart.And your slug value is '. $rowItem->model->slug.' and ID is '.$rowItem->id;
+    // //  echo ' \n';
+    //  //c_sosuen :: an associative array holding the app\product model data 
+    //  $wlCartItemArray = json_encode(array(
+    //       'Id' => $rowItem->id, 
+    //       'Slug' => $rowItem->model->slug,
+    //       'Name' => $rowItem->model->name,
+    //       'Price' => $rowItem->model->price,
+    //       'Details' => $rowItem->model->details,
+    //       'Specification' => $rowItem->model->specification,
+    //     ));
+    //    // return json_encode($wlCartItemArray);
+    // }
+     return $wlcontent;
 }
-// function GetCartContent(){
-//     return Cart::instance('default')->content();
+// function GetWlSlug($rowid){
+//     echo 'Cart::instance('wishlist')->get($rowid)->model->slug';
+
 // }
+function GetCartContent(){
+    return Cart::instance('default')->content();
+}
 function GetImage(){
     $content = GetWishlistContent();
     return asset('img/'.$content->model->slug.'.jpg') ;
