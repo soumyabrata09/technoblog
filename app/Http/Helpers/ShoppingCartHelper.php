@@ -31,6 +31,7 @@ function GetWishlistContent(){
     //    // return json_encode($wlCartItemArray);
     // }
      return $wlcontent;
+    // return json_encode($wlCartItemArray);
 }
 // function GetWlSlug($rowid){
 //     echo 'Cart::instance('wishlist')->get($rowid)->model->slug';

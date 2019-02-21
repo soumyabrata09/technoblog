@@ -18,6 +18,7 @@
     
     <div id="axiostestid">
     <hr/>
+    <!-- method-field="{{ method_field('DELETE')}}" csrf-field="{{csrf_field()}}" -->
     <axiostest wishlist-content="{{ GetWishlistContent() }}"></axiostest>
     <hr/>
   </div>

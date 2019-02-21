@@ -19,14 +19,23 @@ Route::get('/thankyou',function(){
 Route::get('/product',function(){
     return view('product');
 });
+//Shop API
 Route::get('/shop', 'ShopController@index')->name('shop.index');
 Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
+//Cart API
 Route::get('/cart', 'CartController@index')->name('cart.index'); //testing currently will route to the page cartPage.blade.php rather than routing to cart.blade.php , which was the previous behaviour
 Route::post('/cart', 'CartController@store')->name('cart.store');
 Route::delete('/cart/{product}','CartController@destroy')->name('cart.destroy');
-Route::get('/checkout','CheckoutController@index')->name('checkoutpage.index');
+//Checkout API
+Route::get('/checkout','CheckoutController@index')->name('checkout.index');
+//wishlist API
 Route::post('/cart/wishlist/{product}','CartController@switchToWishlist')->name('cart.switchToWishlist');
 
+//tetsing currently being carried out at cartController :: upon successfull testing with the wishlist items will create 
+// a seperate controller concern for wishlist
+// Route::delete('/cart/{product}',function(){
+
+// });
 
 //cart destroy testing
 Route::get('/test/cart',function(){

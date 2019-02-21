@@ -8,8 +8,11 @@
 require('./bootstrap');
 // require('./admin-lte');
 //import VueRouter from 'vue-router';
-import WishList from './components/Wishlist.vue';
+//BlogComponent: () => import('./components/BlogComponent.vue');
 import BlogComponent from './components/BlogComponent.vue';
+import WishList from './components/Wishlist.vue';
+import BillingFormComponent from './components/BillingForm.vue';
+import CardDetailsComponent from './components/Card.vue';
 import Vue from 'vue';
 // window.Vue = require('vue');
 
@@ -52,30 +55,46 @@ Vue.component('example', require('./components/ExampleComponent.vue'));
 //   components : {example}
 // }
 //c_sousen
-const app = new Vue({
-    el: '#app',
-    // components: {wishlist,example},
-    // router
-});
+// const app = new Vue({
+//     el: '#app',
+//     // components: {wishlist,example},
+//     // router
+// });
 //registering a local component for our wishlist segment
-const vm_wishlist = new Vue({
-  el:'#wishlist_component',
-  components:{
-    wishlist : WishList
-  }
-});
+
+//vue instance for our blog content
 const vm_blog = new Vue({
   el: '#blogs',
   components:{
     blogcontent : BlogComponent
   }
 });
-
+//vue instance for our wishlist content
+const vm_wishlist = new Vue({
+  el:'#wishlist_component',
+  components:{
+    wishlist : WishList
+  }
+});
 //c_sosuen : added for testing AXIO
 const vm_axios_test = new Vue({
   el : '#axiostestid',
   components : {
     axiostest : require('./components/AxiosDemo.vue')
+  }
+});
+//vue instance for our billing adress content
+const vm_billing_form = new Vue({
+  el : '#billform',
+  components : {
+    Billing_details_form : BillingFormComponent
+  }
+});
+//vue instance for our card details  content
+const vm_card_form = new Vue({
+  el : '#cardcomp',
+  components : {
+    Card_details : CardDetailsComponent
   }
 });
 // vm_axios_test.counter = GetCartCount();

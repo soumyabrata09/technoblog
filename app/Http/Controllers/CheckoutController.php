@@ -13,7 +13,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('checkoutPage'); // testing with the newly created checkout page hope this works!!!
+        return view('checkout'); // testing with the newly created checkout page hope this works!!!
     }
 
     /**

@@ -26,7 +26,7 @@
 
  <body class="@yield('body-class', '')">
    <!-- wrapping the vue components to our main layout page -->
-    <div id="app">
+    <!-- <div id="app"> -->
      @include('partials.nav')
 
      @yield('content')
@@ -35,6 +35,6 @@
 
      @yield('extra-js')
      <script src="{{ mix('js/app.js') }}"></script>
-  </div>
+  <!-- </div> -->
  </body>
 </html>

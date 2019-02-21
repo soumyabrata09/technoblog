@@ -53,7 +53,7 @@
       <li class="items odd">
         <div class="infoWrap"> 
           <div class="cartSection">
-           <a href="{{ route('shop.show', $cartItem->model->slug) }}"><img src="{{ asset('img/'.$cartItem->model->slug.'.jpg') }}" alt="" class="itemImg" /></a>
+           <a href="{{ route('shop.show', $cartItem->model->slug) }}"><img src="{{ asset('img/'.$cartItem->model->slug.'.jpg') }}" alt="Image not found" class="itemImg" /></a>
             <p class="itemNumber">{{$cartItem->model->slug}}</p>
              <h3>{{$cartItem->model->name}}</h3>
         
@@ -209,7 +209,7 @@
       
             <li class="totalRow"><span class="label">Tax<13%></span><span class="value">{{Cart::tax()}}</span></li>
             <li class="totalRow final"><span class="label">Total</span><span class="value">{{Cart::total()}}</span></li>
-      <li class="totalRow"><a href="#" class="btn continue"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Checkout</a></li>
+      <li class="totalRow"><a href="{{ route('checkout.index') }}" class="btn continue"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Checkout</a></li>
     </ul>
   </div>
   <!-- wishlisted product's listing will go here -->

@@ -127,4 +127,6 @@ class CartController extends Controller
         
         return redirect()->route('cart.index')->with('success_message','Item added to your wishlist successfully');
     }
+    //testing wishlist item : upon successful testing will go for creating a seperate controller for it 
+    
 }

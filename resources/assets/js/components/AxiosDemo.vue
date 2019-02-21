@@ -27,14 +27,18 @@
      
    <div class="wishlist_container">
       <!-- <h3 class="alert-success">You have items in your wishlists</h3> -->
+      {{ wishlistContent }}
        <ul>
-         <li  v-for="content in parsedJson(wishlistContent)" class="wl_items wl_even">
+         <li  v-for="content in parsedJson(wishlistContent)"  v-bind:key="content.id" class="wl_items wl_even">
            <div class="wl_info">
               <div class="wl_Section">
                 <!-- <a :href="route('shop.show', content.model.slug)">
                     <img :src="asset('img/'.content.model.slug.'.jpg')" alt="" class="itemImg" />
                 </a> -->
             :: <p class="prod_catalogue">PRODUCT_NAME</p> ::{{ content.name }}
+            <br />:: rowId :: {{ content.rowId }}
+            <!-- slug not working as model can not be associated -->
+            <!-- :: <p class ="prod_catalogue">Slug </p> :: {{ content.model.slug }} -->
                </div>
                <div class="wl_Section removeWrap">
            <!-- remove function implementation -->
@@ -42,7 +46,13 @@
 <!--            {{ csrf_field() }}
            {{ method_field('DELETE')}} -->
            <!-- <a href="#" class="remove">x</a> -->Remove from wishlist
-                  <button type="submit" class="remove">X</button>
+           <form action="/cart/:product"  method="POST" >
+                  <!-- {{csrfField}}
+                  {{methodField}}
+                  {{show_row_id}} -->
+                 <button type="submit" class="remove" @click="destroyCart(content.rowId)">X</button>
+           </form>
+                 
            <!-- </form> -->
           
              <!-- <a>Add to Wishlist</a> -->
@@ -57,25 +67,56 @@
                 </div>
              </div>
         </li>
-        <!-- <li class="wl_items wl_even">
+      </ul>  
+    </div>
+
+    <hr/>
+    <!--testing with blade template -->
+     <div class="wishlist_container">
+      <!-- <h3 class="alert-success">You have items in your wishlists</h3> -->
+      
+       <ul>
+         @foreach(parsedJson(wishlistContent) as $cartItem)
+        <li class="wl_items wl_even">
+         <!-- <li  v-for="content in parsedJson(wishlistContent)"  v-bind:key="content.id" class="wl_items wl_even"> -->
            <div class="wl_info">
               <div class="wl_Section">
-                 <a href="#"><img src="https://www.pexels.com/photo/scenic-view-of-beach-248797/" alt="image not found"></a>
-            
+                <!-- <a href="route('shop.show', $cartItem->model->slug)">
+                    <img src="asset('img/'.$cartItem->model->slug.'.jpg')" alt="" class="itemImg" />
+                </a> -->
+            <!-- :: <p class="prod_catalogue">PRODUCT_NAME</p> ::{{ content.name }}
+            <br />:: rowId :: {{ content.rowId }} -->
+            <!-- slug not working as model can not be associated -->
+            <!-- :: <p class ="prod_catalogue">Slug </p> :: {{ content.model.slug }} -->
                </div>
                <div class="wl_Section removeWrap">
-           Remove from wishlist
-                  <button type="submit" class="remove">X</button>
+           <!-- remove function implementation -->
+           <!-- <form action ="{{ route('cart.destroy' , $cartItem->rowId) }}" method ="POST" > -->
+<!--            {{ csrf_field() }}
+           {{ method_field('DELETE')}} -->
+           <!-- <a href="#" class="remove">x</a> -->Remove from wishlist
+           <!-- <form :action="destroy" method="POST"> -->
+                  <!-- {{csrfField}}
+                  {{methodField}}
+                  {{show_row_id}} -->
+                 <button type="submit" class="remove">X</button>
+           <!-- </form> -->
+                 
+           <!-- </form> -->
+          
+             <!-- <a>Add to Wishlist</a> -->
                 </div>
                 <div class="wl_Section">
                     <div class="wishlist_cartSection">
                           <button type="submit" class="button button-plain "><i class="fas fa-heart"></i>
+             <!-- <a>Add to Wishlist</a> -->
                                     Move To Cart
                            </button>
                      </div>
                 </div>
              </div>
-        </li> -->
+        </li>
+         @endforeach
       </ul>  
     </div>
 
@@ -105,30 +146,17 @@
 
 <script>
 export default {
-    props : ['cartCount','wishlistContent'],
+    props : ['cartCount','wishlistContent','methodField','csrfField',],
     // props :{
     //     cartCount :[Number,String],
     //     wishlistContent :[Object,JSON]
     // },
     data(){
         return{
+            // csrf_field :  "{{ csrf_field() }}",
+            // method_field_type : "{{ method_field('DELETE')}}",
+            show_row_id : "content.rowId"
             
-            // info : null,
-            // loading : true,
-            // fallacy : false,
-            cartCount : '',
-            // wishlistContent : JSON.stringify(this.wishlistContent),
-            //wishlistContent : JSON.parse(this.wishlistContent),
-            // wishlistContentTest :{
-            //      "rowId": "027c91341fd5cf4d2579b49c4b6a90da", 
-            //      "id": "1",
-            //       "name": "Choco Lave", 
-            //       "qty": 1, 
-            //       "price": 230, 
-            //       "options": [],
-            //       "tax": 32.2,
-            //       "subtotal": 230 
-            // }
         }
     },
     
@@ -139,21 +167,9 @@ export default {
           return JSON.parse(json_obj)
        },   
 
-       extractJSON : function(obj) {
-          var keys = Object.keys(obj);
-          for(var i=0; i<keys.length; i++){
-              var key = keys[i];
-              console.log(key, obj[key]);
-          }
-                    //  for (const i in obj) {
-                    //       if (Array.isArray(obj[i]) || typeof obj[i] === 'object') {
-                    //             console.log(indent + i + ' is array or object');
-                    //             extractJSON(obj[i], indent + ' > ' + i + ' > ');
-                    //         } else {
-                    //             console.log(indent + i + ': ' + obj[i]);
-                    //         }
-                    //      }
-                      }
+       destroyCart : function(listContent){
+          return listContent;
+       }
      },
     // created(){
     //   axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
